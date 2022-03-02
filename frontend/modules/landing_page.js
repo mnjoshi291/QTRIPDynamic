@@ -30,10 +30,10 @@ function addCityToDOM(id, city, description, image) {
   let parentele=document.getElementById("data");
   let creatediv=document.createElement("div");
   creatediv.setAttribute('class', 'col-12 col-sm-6 col-lg-3 mb-4');
+  creatediv.innerHTML=`<a href="pages/adventures/?city=${id}"id=${id}>`;
   var anchor=document.createElement('a');
-  anchor.target = '_blank';
-  anchor.href="pages/adventures/?city="+id;
-  creatediv.appendChild(anchor);
+  anchor.setAttribute('href','adventures/?city='+id);
+  creatediv.append(anchor);
   let creatediv2=document.createElement("div");
   creatediv2.setAttribute('class', 'tile');
   creatediv.appendChild(creatediv2);
