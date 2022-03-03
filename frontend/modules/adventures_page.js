@@ -4,21 +4,51 @@ import config from "../conf/index.js";
 function getCityFromURL(search) {
   // TODO: MODULE_ADVENTURES
   // 1. Extract the city id from the URL's Query Param and return it
-
+  const params = new URLSearchParams(search);
+  return params.get("city");
 }
 
 //Implementation of fetch call with a paramterized input based on city
 async function fetchAdventures(city) {
   // TODO: MODULE_ADVENTURES
   // 1. Fetch adventures using the Backend API and return the data
-
+  try{
+  let url=config.backendEndpoint+('/adventures?city='+city);
+  let response=await fetch(url);
+  let data=await response.json();
+  return data;
+}
+  catch(err){
+    return null;
+  }
 }
 
 //Implementation of DOM manipulation to add adventures for the given city from list of adventures
 function addAdventureToDOM(adventures) {
   // TODO: MODULE_ADVENTURES
   // 1. Populate the Adventure Cards and insert those details into the DOM
-
+  let parentele=document.getElementById("data");
+  for(let i=0;i<adventures.length;i++){
+    let creatediv=document.createElement('div');
+    creatediv.className="col-6 col-md-4 col-lg-3 mb-4";
+    creatediv.innerHTML=`<a href="detail/?adventure=${adventures[i].id}" id=${adventures[i].id}>
+    <div class="activity-card">
+    <div class="category-banner">${adventures[i].category}</div>
+    <img class="img-responsive" src="${adventures[i].image}" />
+    <div class="adventure-card-text w-100 text-md-center mt-2">
+    <div class="d-block d-md-flex justify-content-between flex-wrap pl-3 pr-3"
+        <h5>${adventures[i].name}</h5>
+        <p>&#x20B9;${adventures[i].costPerHead}</p>
+      </div>
+      <div class="d-block d-md-flex justify-content-between flex-wrap pl-3 pr-3"
+        <h5>Duration</h5>
+        <p>${adventures[i].duration} hours</p>
+      </div>
+      </div>
+      </div>
+    </a>`;
+      parentele.appendChild(creatediv);
+  }
 }
 
 //Implementation of filtering by duration which takes in a list of adventures, the lower bound and upper bound of duration and returns a filtered list of adventures.
