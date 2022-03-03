@@ -14,6 +14,7 @@ async function init() {
 async function fetchCities() {
   // TODO: MODULE_CITIES
   // 1. Fetch cities using the Backend API and return the data
+
   try{
   let response=await fetch(config.backendEndpoint+'/cities');
   let data =await response.json();
@@ -41,5 +42,4 @@ function addCityToDOM(id, city, description, image) {
   </a>`;
   parentele.appendChild(creatediv);
 }
-
 export { init, fetchCities, addCityToDOM };
