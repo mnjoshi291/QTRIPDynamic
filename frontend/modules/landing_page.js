@@ -41,5 +41,7 @@ function addCityToDOM(id, city, description, image) {
   </div>
   </a>`;
   parentele.appendChild(creatediv);
+
 }
+
 export { init, fetchCities, addCityToDOM };
