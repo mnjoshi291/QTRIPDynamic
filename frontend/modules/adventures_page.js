@@ -59,7 +59,6 @@ function addAdventureToDOM(adventures) {
 catch(e){
       return Error(e);
 }
-
 }
 
 //Implementation of filtering by duration which takes in a list of adventures, the lower bound and upper bound of duration and returns a filtered list of adventures.
@@ -129,6 +128,7 @@ function saveFiltersToLocalStorage(filters) {
   // TODO: MODULE_FILTERS
   // 1. Store the filters as a String to localStorage
   window.localStorage.setItem('filters', JSON.stringify(filters));
+
   return true;
 }
 
