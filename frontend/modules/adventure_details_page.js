@@ -4,8 +4,10 @@ import config from "../conf/index.js";
 function getAdventureIdFromURL(search) {
   // TODO: MODULE_ADVENTURE_DETAILS
   // 1. Get the Adventure Id from the URL
-  const params = new URLSearchParams(search);
-  return params.get("adventure");
+
+
+  // Place holder for functionality to work in the Stubs
+  return null;
 }
 //Implementation of fetch call with a paramterized input based on adventure ID
 async function fetchAdventureDetails(adventureId) {
