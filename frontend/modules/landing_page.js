@@ -14,13 +14,12 @@ async function init() {
 async function fetchCities() {
   // TODO: MODULE_CITIES
   // 1. Fetch cities using the Backend API and return the data
-
-  try{
-  let response=await fetch(config.backendEndpoint+'/cities');
-  let data =await response.json();
-  return data;
-  }catch(err){
-      return null;
+  try {
+  let x = await fetch(`${config.backendEndpoint}/cities`);
+  let y = await x.json();
+  return y;
+  } catch(err){
+    return null;
   }
 }
 
@@ -28,20 +27,20 @@ async function fetchCities() {
 function addCityToDOM(id, city, description, image) {
   // TODO: MODULE_CITIES
   // 1. Populate the City details and insert those details into the DOM
-  let parentele=document.getElementById("data");
-  let creatediv=document.createElement("div");
-  creatediv.setAttribute('class', 'col-12 col-sm-6 col-lg-3 mb-4');
-  creatediv.innerHTML=`<a href="pages/adventures/?city=${id}"id=${id}>
-  <div class="tile">
-  <img src="${image}"/>
-  <div class="tile-text text-center">
-  <h5>${city}</h5>
-  <p>${description}</p>
-  </div>
-  </div>
-  </a>`;
-  parentele.appendChild(creatediv);
-
+  let card = document.createElement("div");
+  card.className = "col-12 col-sm-6 col-lg-3 pt-3";
+  card.innerHTML = `
+      <a href="pages/adventures/?city=${id}" id=${id}>
+        <div class="tile justify-content-end align-items-center">
+         <img class="tile img" src="${image}"/>
+         <div class="tile-text text-center">
+            <h5>${city}</h5>
+            <p>${description}</p>
+          </div>
+        </div>
+      </a>
+    `;
+  document.getElementById("data").appendChild(card);
 }
 
 export { init, fetchCities, addCityToDOM };
